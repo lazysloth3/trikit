@@ -171,6 +171,7 @@ class BootstrapChainLadder(BaseChainLadder):
         BootstrapChainLadderResult
         """
         # Obtain reference to Chain ladder point estimates.
+        print('Change to weighted-8')
         ldfs_ = self._ldfs(sel="weighted-8")
         cldfs_ = self._cldfs(ldfs=ldfs_)
         ultimates_ = self._ultimates(cldfs=cldfs_)
