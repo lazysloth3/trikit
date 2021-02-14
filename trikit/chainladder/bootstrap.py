@@ -171,7 +171,7 @@ class BootstrapChainLadder(BaseChainLadder):
         BootstrapChainLadderResult
         """
         # Obtain reference to Chain ladder point estimates.
-        ldfs_ = self._ldfs(sel="all-weighted")
+        ldfs_ = self._ldfs(sel="weighted-8")
         cldfs_ = self._cldfs(ldfs=ldfs_)
         ultimates_ = self._ultimates(cldfs=cldfs_)
         reserves_ = self._reserves(ultimates=ultimates_)
@@ -180,7 +180,7 @@ class BootstrapChainLadder(BaseChainLadder):
         trisqrd_ = self._trisqrd(ldfs=ldfs_)
 
         # Obtain reference to Bootstrap estimates.
-        tri_fit_cum_ = self._tri_fit_cum(sel="all-weighted")
+        tri_fit_cum_ = self._tri_fit_cum(sel="weighted-8")
         tri_fit_incr_ = self._tri_fit_incr(fitted_tri_cum=tri_fit_cum_)
         unscld_residuals_ = self._resid_us(fitted_tri_incr=tri_fit_incr_)
         adjust_residuals_ = self._resid_adj(resid_us=unscld_residuals_)
@@ -258,7 +258,7 @@ class BootstrapChainLadder(BaseChainLadder):
 
         dfsumm = dfsumm.reset_index(drop=False).rename({"index":"origin"}, axis=1)
 
-        kwds = {"sel":"all-weighted", "sims": sims, "neg_handler":neg_handler,
+        kwds = {"sel":"weighted-8", "sims": sims, "neg_handler":neg_handler,
                 "procdist":procdist, "parametric":parametric,
                 "q":q, "interpolation":interpolation,}
 
@@ -310,7 +310,7 @@ class BootstrapChainLadder(BaseChainLadder):
 
 
 
-    def _tri_fit_cum(self, sel="all-weighted"):
+    def _tri_fit_cum(self, sel="weighted-8"):
         """
         Return the cumulative fitted triangle using backwards recursion,
         starting with the observed cumulative paid/incurred-to-date along the
